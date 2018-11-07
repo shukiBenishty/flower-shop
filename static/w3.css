@@ -336,3 +336,8 @@ footer .glyphicon {
   .form-control {
    border-radius: 0px;
   }
+
+
+  .pt-3-half {
+    padding-top: 1.4rem;
+    }

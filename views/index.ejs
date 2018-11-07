@@ -70,6 +70,76 @@
 <% include about %>
 <% include contact %>
 <% include footer %>
+
+
+
+<table class="table" id="makeEditable">
+    <thead>
+     <tr>
+       <th>Firstname</th>
+       <th>Lastname</th>
+       <th>Email </th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr>
+       <td>Default</td>
+       <td>Defaultson</td>
+       <td>def@somemail.com</td>
+     </tr>
+     <tr class="success">
+       <td>Success</td>
+       <td>Doe</td>
+       <td>john@example.com</td>
+     </tr>
+     <tr class="danger">
+       <td>Danger</td>
+       <td>Moe</td>
+       <td>mary@example.com</td>
+     </tr>
+     <tr class="info">
+       <td>Info</td>
+       <td>Dooley</td>
+       <td>july@example.com</td>
+     </tr>
+     <tr class="warning">
+       <td>Warning</td>
+       <td>Refs</td>
+       <td>bo@example.com</td>
+     </tr>
+     <tr class="active">
+       <td>Active</td>
+       <td>Activeson</td>
+       <td>act@example.com</td>
+     </tr>
+   </tbody>
+ </table>
+ 
+ <span>
+   <button id="but_add">Add New Row</button>
+ </span>
+
+
+<script>
+$('#makeEditable').SetEditable({ 
+  $addButton: $('#but_add')
+});
+
+var data = TableToCSV('makeEditable', ',');
+
+$('#makeEditable').SetEditable({ 
+  $addButton: $('#but_add'),
+  columnsEd: null  // Ex.: "1,2,3,4,5"
+});
+
+$('#makeEditable').SetEditable({
+  onEdit: function() {}, 
+  onDelete: function() {}, 
+  onBeforeDelete: function() {},
+  onAdd: function() {} 
+});
+</script>
+<!-- Editable table -->
 <script src="./index.js"></script>
 </body>
 </html>
