@@ -5,8 +5,13 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="#services">SERVICES</a></li>
-        <li><a href="#catalog">CATALOG</a></li>
-        <li><a href="#branches">BRANCHES</a></li>
+        <%if(true){%>
+          <li><a href="#catalog">CATALOG</a></li>
+          <li><a href="#branches">BRANCHES</a></li>
+          <%if(false){%>
+            <li><a href="#customers">CUSTOMERS</a></li>
+          <%}%>
+        <%}%>
         <li><a href="#about">ABOUT</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

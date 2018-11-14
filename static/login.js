@@ -17,6 +17,13 @@ $(function() {
                     msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
                 } else {
                     msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
+                    $.ajax({
+                        url: "/customers",
+                        type: "GET",
+                        success: function(result){
+                        $("#customers_section").html(result);
+                        }
+                    });
                 }
                 return false;
                 break;

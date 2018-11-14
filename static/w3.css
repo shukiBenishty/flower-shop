@@ -177,8 +177,8 @@ footer .glyphicon {
 }
 
 #img_flower {
-    max-height: 200;
-    max-width: 200px;
+    height: 200px !important;
+    width: 200px !important;
 }
   @import url(http://fonts.googleapis.com/css?family=Roboto);
 
@@ -253,6 +253,7 @@ footer .glyphicon {
   ######################################### */
   .modal {
       text-align: center;
+      z-index: 100001 !important;
   }
 
   @media screen and (min-width: 768px) {
@@ -272,6 +273,7 @@ footer .glyphicon {
   .modal-backdrop.in {
       filter: alpha(opacity=50);
       opacity: .8;
+      z-index: 100000 !important;
   }
 
   .modal-content {

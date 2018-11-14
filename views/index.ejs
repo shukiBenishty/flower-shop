@@ -1,145 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Flower Shop</title>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"/>
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="./w3.css" />
-</head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <head>
+    <title>Flower Shop</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./w3.css" />
+  </head>
+  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-<% include navbar %>
-<div class="jumbotron text-center">
-  <h1>Flower Shop</h1>
-  <p>specialize in Flower</p>
-  <img  id="logo_img" src="https://www.w3schools.com/howto/img_avatar.png"/>
-</div>
-
-<% include login %>
-
-<!-- Container (Services Section) -->
-<div id="services" class="container-fluid text-center">
-  <h2>SERVICES</h2>
-  <h4>What we offer</h4>
-  <br>
-  <div class="row slideanim">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-off logo-small"></span>
-      <h4>POWER</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+    <% include navbar %>
+    <div class="jumbotron text-center">
+      <h1>Flower Shop</h1>
+      <p>specialize in Flower</p>
+      <img  id="logo_img" src=""/>
     </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-heart logo-small"></span>
-      <h4>LOVE</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-lock logo-small"></span>
-      <h4>JOB DONE</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-  </div>
-  <br><br>
-  <div class="row slideanim">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-leaf logo-small"></span>
-      <h4>GREEN</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-certificate logo-small"></span>
-      <h4>CERTIFIED</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-wrench logo-small"></span>
-      <h4 style="color:#303030;">HARD WORK</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-  </div>
-</div>
 
+    <section id="login_section">
+      <% include login %>
+    </section>
+    <section id="services_section">
+      <% include services %>
+    </section>
+    <section id="catalog_section">
+      <% include catalog %>
+    </section>
+    <section id="branches_section">
+      <% include branches %>
+    </section>
+    <section id="about_section">
+      <% include about %>
+    </section>
+    <section id="contact_section">
+      <% include contact %>
+    </section>
+    <section id="footer_section">
+      <% include footer %>
+    </section>
+    <section id="customers_section">
+      <% include customers %>
+    </section>
 
-<% include catalog %>
-<% include branches %>
-<% include about %>
-<% include contact %>
-<% include footer %>
-
-
-
-<table class="table" id="makeEditable">
-    <thead>
-     <tr>
-       <th>Firstname</th>
-       <th>Lastname</th>
-       <th>Email </th>
-     </tr>
-   </thead>
-   <tbody>
-     <tr>
-       <td>Default</td>
-       <td>Defaultson</td>
-       <td>def@somemail.com</td>
-     </tr>
-     <tr class="success">
-       <td>Success</td>
-       <td>Doe</td>
-       <td>john@example.com</td>
-     </tr>
-     <tr class="danger">
-       <td>Danger</td>
-       <td>Moe</td>
-       <td>mary@example.com</td>
-     </tr>
-     <tr class="info">
-       <td>Info</td>
-       <td>Dooley</td>
-       <td>july@example.com</td>
-     </tr>
-     <tr class="warning">
-       <td>Warning</td>
-       <td>Refs</td>
-       <td>bo@example.com</td>
-     </tr>
-     <tr class="active">
-       <td>Active</td>
-       <td>Activeson</td>
-       <td>act@example.com</td>
-     </tr>
-   </tbody>
- </table>
- 
- <span>
-   <button id="but_add">Add New Row</button>
- </span>
-
-
-<script>
-$('#makeEditable').SetEditable({ 
-  $addButton: $('#but_add')
-});
-
-var data = TableToCSV('makeEditable', ',');
-
-$('#makeEditable').SetEditable({ 
-  $addButton: $('#but_add'),
-  columnsEd: null  // Ex.: "1,2,3,4,5"
-});
-
-$('#makeEditable').SetEditable({
-  onEdit: function() {}, 
-  onDelete: function() {}, 
-  onBeforeDelete: function() {},
-  onAdd: function() {} 
-});
-</script>
-<!-- Editable table -->
-<script src="./index.js"></script>
-</body>
+    <script src="./index.js"></script>
+  </body>
 </html>

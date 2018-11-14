@@ -20,15 +20,19 @@ $(document).ready(function(){
       });
     } // End if
   });
-
+  animaiteSlides();
   $(window).scroll(function() {
-    $(".slideanim").each(function(){
-      var pos = $(this).offset().top;
-      var winTop = $(window).scrollTop();
-        if (pos < winTop + window.innerHeight - (this.scrollHeight / 2)) {
-          $(this).addClass("slide");
-          this.className = this.className.replace("slideanim", "");
-          }
-        });
-       });
-    })
+    animaiteSlides();
+  });
+})  
+
+var animaiteSlides = () => {
+  $(".slideanim").each(function(){
+    var pos = $(this).offset().top;
+    var winTop = $(window).scrollTop();
+    if (pos < winTop + window.innerHeight - (this.scrollHeight / 2)) {
+      $(this).addClass("slide");
+      this.className = this.className.replace("slideanim", "");
+    }
+  });
+}

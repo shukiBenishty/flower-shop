@@ -1,72 +1,51 @@
+
 <!-- Container (Catalog Section) -->
-<div id="catalog" class="container-fluid">
-  <div class="text-center">
-    <h2>Catalog</h2>
-  </div>
-  <div class="row">
-<div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner slideanim" role="listbox">
-    <div class="container item active">
-      <div class="col-sm-4 col-xs-12 ">
-        <div class="panel panel-default text-center">
-          <div class="panel-heading">
-            <h1>Basic</h1>
-          </div>
-          <div class="panel-body">
-            <p><strong>20</strong> Lorem</p>
-            <p><strong>15</strong> Ipsum</p>
-          </div>
-          <div class="panel-footer">
-            <img class="img-circle" id="img_flower" src="https://www.w3schools.com/howto/img_avatar.png">
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 col-xs-12 ">
-        <div class="panel panel-default text-center">
-          <div class="panel-heading">
-            <h1>Pro</h1>
-          </div>
-          <div class="panel-body">
-            <p><strong>50</strong> Lorem</p>
-            <p><strong>25</strong> Ipsum</p>
-
-          </div>
-          <div class="panel-footer">
-            <img class="img-circle" id="img_flower" src="https://www.w3schools.com/howto/img_avatar.png">
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 col-xs-12 item">
-        <div class="panel panel-default text-center">
-          <div class="panel-heading">
-            <h1>Premium</h1>
-          </div>
-          <div class="panel-body">
-            <p><strong>100</strong> Lorem</p>
-            <p><strong>50</strong> Ipsum</p>
-          </div>
-          <div class="panel-footer">
-            <img class="img-circle" id="img_flower" src="https://www.w3schools.com/howto/img_avatar.png">
-          </div>
-        </div>
-      </div>
+<div id="catalog" class="container-fluid  bg-grey" >
+    <div class="text-center">
+      <h2>Catalog</h2>
     </div>
-
-
+    <div class="row">
+  <div id="productCarousel" class="carousel slide text-center" data-ride="carousel">
+  
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner slideanim" role="listbox">
+      <% for( let i = 0; flowers[i] ; i = i + 3 ){  %>
+        <div class="container item <% if(i == 0){ %><%= "active" %><% } %>">
+            <!-- one slide -->
+            <% for(let j = i; flowers[j] && j < i + 3; j++){  %>
+            <div class="col-sm-4 col-xs-12 ">
+              <div class="panel panel-default text-center">
+                <div class="panel-heading">
+                  <h1><%= flowers[j].name %></h1>
+                </div>
+                <div class="panel-body">
+                  <p><strong><%= flowers[j].color %></strong></p>
+                  <p><strong><%= flowers[j].price %></strong> $</p>
+                </div>
+                <div class="panel-footer">
+                  <img class="img-circle" id="img_flower" src="<%= flowers[j].image %>">
+                </div>
+              </div>
+            </div>
+            <% }; %>
+        </div>
+        <!-- one slide -->
+      <% }; %>
+    </div>
+    
+    
+  
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#productCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#productCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
+  
+    </div>
   </div>
-</div>
+  

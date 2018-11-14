@@ -1,26 +1,44 @@
 var http = require('http');
 var express = require('express');
-var database = require('./database');
+var session = require('express-session');
+let logger = require('morgan');
+var { users , branches, category, flowers} =  require('./database');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+let debug = require('debug')('lab4:session')
+
+let secret = 'lab4 session'
 
 var app = express();
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
+app.use(logger('dev'))
+app.use(cookieParser(secret));
+app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded({extended:true}) );
-app.use(cookieParser('SOME_SALT'));
-app.use( express.static('./static'));
+app.use( express.static('./static') );
+app.use(session({secret: secret}));
+
+app.all('/*', async (req, res, next) => {
+    debug('headers');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type,X-Requested-With');
+    next();
+});
+
 
 app.get( '/', (req, res) => {
+    console.log(flowers);
     res.render('index', 
         {
+            flowers: flowers,
             items: null,
             user: req.signedCookies.user
         },    
         (err, html) => {   
             res.send(html);
         });
-   
 });
 
 app.post( '/', (req, res) => {
@@ -36,6 +54,27 @@ app.post( '/', (req, res) => {
         res.redirect('/');
     });
 });
+
+
+
+app.get('/customers', function (req, res) {
+    res.render('customers', 
+        {
+            items: null,
+            user: req.signedCookies.user
+        },    
+        (err, html) => {   
+            if (err) {
+                console.error(err);
+                
+                res.send(html);                 
+            }
+            res.send(html);
+        });
+});
+
+
+
 
 app.get( '/login', (req, res) => {
     res.render('login', {user: req.signedCookies.user});
@@ -264,14 +303,14 @@ function admin_authorize(req, res, next) {
     }
 }
 
-var db, dburl = 'mongodb://gql-adminq:shukishugi5@ds123753.mlab.com:23753/test-gql';
-database.connectDB(dburl).then(function(res) {
-    db = res;
-    console.log( 'Connected to database' );
-}, function(err) {
-    console.error(err);
-    console.log( 'Could not connect to database');
-});
+// var db, dburl = 'mongodb://gql-adminq:shukishugi5@ds123753.mlab.com:23753/test-gql';
+// database.connectDB(dburl).then(function(res) {
+//     db = res;
+//     console.log( 'Connected to database' );
+// }, function(err) {
+//     console.error(err);
+//     console.log( 'Could not connect to database');
+// });
 
 http.createServer(app).listen( process.env.PORT || 3000 );
 console.log( 'Server started' );

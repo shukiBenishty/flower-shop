@@ -1,44 +1,43 @@
 <!-- Container (Branches Section) -->
-<div id="branches" class="container-fluid text-center bg-grey">
+<div id="branches" class="container-fluid text-center">
   <h2>branches</h2>
   <h4>Where You Can Find As</h4>
   <div class="row text-center slideanim">
-    <div class="col-sm-4">
-      <div class="thumbnail">
-        <img src="https://www.w3schools.com/bootstrap/paris.jpg" alt="Paris" width="400" height="300">
-          <p><strong>Paris</strong></p>
-          <div class="row ">
-            <div class="col-8 col-sm-6">
-              <p >Yes, we built Paris</p>
+      <% for( let i = 0; branches[i] ; i++){  %>
+        <div class="col-sm-4">
+            <div class="thumbnail">
+              <img src="<%= flowers[i].image %>" alt="Paris" width="400" height="300">
+                <p><strong><%= branches[i].name %></strong></p>
+                <div class="row ">
+                  <div class="col-8 col-sm-6">
+                    <p ><%= branches[i].description %></p>
+                  </div>
+                  <% if(branches[i].open) { %>
+                  <div class="col-8 col-sm-6"  >
+                    <svg  id="Capa_1" style="float: right; margin-right: 15px;"  viewBox="0 0 478.666 478.666" width="30px" height="30px" fill="#3095d8">
+                      <g>
+                          <path d="M199.725,0v36.025H85.211v421.66l114.514,0.094v36.459l209.085-37.555l0.216-418.867L199.725,0z M234.404,230.574   c7.022,0,12.715,7.408,12.715,16.545c0,9.139-5.692,16.545-12.715,16.545s-12.715-7.406-12.715-16.545   C221.688,237.982,227.382,230.574,234.404,230.574z M119.211,423.713V70.025h80.514v353.753L119.211,423.713z" />
+                      </g>
+                    </svg>
+                  </div>
+                  <% } else { %>
+                    <div class="col-8 col-sm-6"  >
+                      <svg  id="Capa_1" style="float: right; margin-right: 15px;"  viewBox="0 0 478.666 478.666" width="30px" height="30px" fill="gray">
+                        <g>
+                          <path d="M71.553,0v478.085l335.561,0.581V0H71.553z M103.109,446.583V31.558h272.445v56.813h-10.781V42.086H113.893v394.468   h250.881V390.27h10.781v56.785L103.109,446.583z M364.773,137.459h10.781V341.18h-10.781V137.459z M165.787,239.32   c0,9.148-7.418,16.566-16.568,16.566c-9.15,0-16.568-7.418-16.568-16.566c0-9.15,7.418-16.568,16.568-16.568   C158.369,222.752,165.787,230.17,165.787,239.32z"/>
+                        </g>
+                      </svg>
+                    </div>
+                  <% } %>
+                </div>
             </div>
-            <div class="col-8 col-sm-6"  >
-              <svg  id="Capa_1" style="float: right; margin-right: 15px;"  viewBox="0 0 478.666 478.666" width="30px" height="30px" fill="green">
-                <g>
-                  <path d="M71.553,0v478.085l335.561,0.581V0H71.553z M103.109,446.583V31.558h272.445v56.813h-10.781V42.086H113.893v394.468   h250.881V390.27h10.781v56.785L103.109,446.583z M364.773,137.459h10.781V341.18h-10.781V137.459z M165.787,239.32   c0,9.148-7.418,16.566-16.568,16.566c-9.15,0-16.568-7.418-16.568-16.566c0-9.15,7.418-16.568,16.568-16.568   C158.369,222.752,165.787,230.17,165.787,239.32z"/>
-                </g>
-              </svg>
-            </div>
-          </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="thumbnail">
-        <img src="https://www.w3schools.com/bootstrap/newyork.jpg" alt="New York" width="400" height="300">
-        <p><strong>New York</strong></p>
-        <p>We built New York</p>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="thumbnail">
-        <img src="https://www.w3schools.com/bootstrap/sanfran.jpg" alt="San Francisco" width="400" height="300">
-        <p><strong>San Francisco</strong></p>
-        <p>Yes, San Fran is ours</p>
-      </div>
-    </div>
-  </div><br>
+        </div>
+      <% } %>
+  </div>
+  <br>
 
   <h2>What our customers say</h2>
-  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+  <div id="reviewCarousel" class="carousel slide text-center" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -60,11 +59,11 @@
     </div>
 
     <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <a class="left carousel-control" href="#reviewCarousel" role="button" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <a class="right carousel-control" href="#reviewCarousel" role="button" data-slide="next">
       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
