@@ -2,7 +2,7 @@ var http = require('http');
 var express = require('express');
 var session = require('express-session');
 let logger = require('morgan');
-var { users , branches, category, flowers} =  require('./database');
+var { users , roles, branches, flowers} =  require('./database');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 let debug = require('debug')('lab4:session')
@@ -32,7 +32,10 @@ app.get( '/', (req, res) => {
     console.log(flowers);
     res.render('index', 
         {
+            users: users,
+            roles: roles,
             flowers: flowers,
+            branches: branches,
             items: null,
             user: req.signedCookies.user
         },    
@@ -57,7 +60,7 @@ app.post( '/', (req, res) => {
 
 
 
-app.get('/customers', function (req, res) {
+app.get('/loginadmin', function (req, res) {
     res.render('customers', 
         {
             items: null,
@@ -73,6 +76,22 @@ app.get('/customers', function (req, res) {
         });
 });
 
+app.get('/customers', function (req, res) {
+    res.send(users);
+});
+
+app.post('/customers', function (req, res) {
+    users.push(req.body)
+    res.send(users);
+});
+
+app.put('/customers', function (req, res) {
+    res.send(users);
+});
+
+app.delete('/customers', function (req, res) {
+    res.send(users);
+});
 
 
 

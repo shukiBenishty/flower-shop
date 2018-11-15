@@ -18,10 +18,10 @@ $(function() {
                 } else {
                     msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
                     $.ajax({
-                        url: "/customers",
+                        url: "/loginadmin",
                         type: "GET",
                         success: function(result){
-                        $("#customers_section").html(result);
+                            $("#customers_section").html(result);
                         }
                     });
                 }
@@ -40,6 +40,7 @@ $(function() {
                 var $rg_username=$('#register_username').val();
                 var $rg_email=$('#register_email').val();
                 var $rg_password=$('#register_password').val();
+                var $rg_address=$('#register_address').val();
                 if ($rg_username == "ERROR") {
                     msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "error", "glyphicon-remove", "Register error");
                 } else {

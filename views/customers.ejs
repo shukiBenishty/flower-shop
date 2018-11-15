@@ -1,60 +1,90 @@
 <% if(true){ %>
-<link type="text/css" rel="stylesheet" href="/jsgrid.min.css" />
-<link type="text/css" rel="stylesheet" href="/jsgrid-theme.min.css" />
- 
-<script type="text/javascript" src="/jsgrid.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/jsgrid.min.css" />
+    <link type="text/css" rel="stylesheet" href="/jsgrid-theme.min.css" />
+    
+    <script type="text/javascript" src="/jsgrid.min.js"></script>
 
-<div id="jsGrid"></div>
+    <div id="jsGrid"></div>
 
-<script>
-    var clients = [
-        { 
-            "Name": "Otto Clay",
-            "Age": 25,
-            "Country": 1,
-            "Address": "Ap #897-1459 Quam Avenue",
-            "Married": false
-         },
-        { "Name": "Connor Johnston", "Age": 45, "Country": 2, "Address": "Ap #370-4647 Dis Av.", "Married": true },
-        { "Name": "Lacey Hess", "Age": 29, "Country": 3, "Address": "Ap #365-8835 Integer St.", "Married": false },
-        { "Name": "Timothy Henson", "Age": 56, "Country": 1, "Address": "911-5143 Luctus Ave", "Married": true },
-        { "Name": "Ramona Benton", "Age": 32, "Country": 3, "Address": "Ap #614-689 Vehicula Street", "Married": false }
-    ];
-    
-    var countries = [
-        { Name: "", Id: 0 },
-        { Name: "United States", Id: 1 },
-        { Name: "Canada", Id: 2 },
-        { Name: "United Kingdom", Id: 3 }
-    ];
-    
-    $("#jsGrid").jsGrid({
-        width: "100%",
-        height: "400px",
-    
-        inserting: true,
-        editing: true,
-        sorting: true,
-    
-        data: clients,
-    
-        controller: {
-            loadData: function (){ console.log("load"); },
-            insertItem: function (){ console.log("insert"); },
-            updateItem:  function (){ console.log("update"); },
-            deleteItem: function (){ console.log("delete"); }
-        },
-    
-
-
-        fields: [
-            { name: "Name", type: "text", validate: "required" },
-            { name: "Email", type: "text" },
-            { name: "Address", type: "text" },
-            { name: "Country", type: "select", items: countries, valueField: "Id", textField: "Name" },
-            { name: "Married", type: "checkbox", title: "Is Admin" },
-            { type: "control" }
+    <script>  
+        let roles = [
+            {role:"Manager", id:"0"},
+            {role:"Worker", id:"1"},
+            {role:"Customer", id:"2"},
+            {role:"Supplier", id:"3"}
         ]
-    });
-</script>
+
+
+        $("#jsGrid").jsGrid({
+            width: "100%",
+            height: "400px",
+        
+            inserting: true,
+            editing: true,
+            sorting: true,
+            
+            autoload: true,
+            controller: {
+                loadData: function (){ 
+                    return $.ajax({
+                        type: "GET",
+                        url: "/customers",
+                    });
+                },
+                insertItem: function(item) {
+                    return $.ajax({
+                        type: "POST",
+                        url: "/customers",
+                        data: item
+                    });
+                },
+                
+                updateItem: function(item) {
+                    return $.ajax({
+                        type: "PUT",
+                        url: "/customers",
+                        data: item
+                    });
+                },
+                
+                deleteItem: function(item) {
+                    return $.ajax({
+                        type: "DELETE",
+                        url: "/customers",
+                        data: item
+                    });
+                }
+            },
+        
+            fields: [
+                { name: "name", type: "text", validate: "required", title: "Name" },
+                { name: "email", type: "text", validate: "required" , title: "Email"},
+                { name: "address", type: "text", validate: "required" , title: "Address"},
+                { 
+                    name: "role",                
+                    type: "select",
+                    items: roles,
+                    validate: "required",
+                    selectedIndex: 0,
+                    valueField: "id",
+                    textField: "role",
+                    title: "Role",
+                    width: 80
+                },
+                { name: "isAdmin",
+                 type: "checkbox",
+                  editing: false,
+                  inserting: false,
+                    title: "Is Admin",
+                      width: 70,
+                    itemTemplate: function(value) {
+                        return (value === "1")?
+                        `<input type="checkbox" checked disabled>`:
+                        `<input type="checkbox" disabled>`
+                    },
+                },
+                { type: "control" }
+            ]
+        });
+    </script>
 <% } %>

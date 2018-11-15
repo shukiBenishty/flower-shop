@@ -1,46 +1,50 @@
-
-let category = [
-		{name:"Manager", id:1},
-		{name:"Worker", id:1},
-		{name:"Customer", id:1},
-		{name:"Supplier", id:1}
-	]
 let branches = [ 
 	{	id: 1 ,name:"Paris",  open: true , description:'Yes, we built Paris', image: "https://www.w3schools.com/bootstrap/paris.jpg" },
 	{	id: 2 ,name:"New York",  open: false, description:'We built New York', image: "https://www.w3schools.com/bootstrap/newyork.jpg" },
-	{	id: 2 ,name:"San Francisco",  open: true, description:'Yes, San Fran is ours', image: "https://www.w3schools.com/bootstrap/sanfran.jpg" }
+	{	id: 3 ,name:"San Francisco",  open: true, description:'Yes, San Fran is ours', image: "https://www.w3schools.com/bootstrap/sanfran.jpg" }
 ];
 let users = [ 
 	{
 		id:305266462, 
 		name:'Shuki', 
-		category: 1, 
-		branchId:956, 
-		userName:'a', 
-		password:'1'
+		role: "0",
+		address: "avramski 18 Tel-Aviv",
+		email:'shuki.benishty@gmail.com', 
+		password:'shuki'
 	},
 	{
 		id:325817434, 
 		name:'Avishag', 
-		category: 3 ,
-		userName:'Tzvika123' ,
-		password:'abcd'
+		role: "1",
+		address: "Erzel 152/16 Yeruham",
+		email:'avishag@gmail.com' ,
+		password:'avishag'
 	},
 	{
-		id:123456, 
+		id:982354335, 
 		name:'Anael', 
-		category: 2 ,
-		userName:'d' ,
-		password:'2'
+		address: "Milman 2/14 Ashdod",
+		role: "2" ,
+		email:'anael@gmail.com' ,
+		password:'anael'
 	},
 	{
-		id:123, 
+		id:628795656, 
 		name:'Tahel', 
-		category:4 ,
-		userName:'s' ,
-		password:'11'
+		address: "Rimon 12/2 Yavne",
+		role: "3",
+		email:'tahel@gmail.com' ,
+		password:'tahel'
 	}
 ];
+
+let roles = [
+	{role:"Manager", id:"1"},
+	{role:"Worker", id:"2"},
+	{role:"Customer", id:"3"},
+	{role:"Supplier", id:"0"}
+]
+
 let flowers = [ 
 	{
 		name:'Rose', 
@@ -65,5 +69,5 @@ let flowers = [
 
 exports.users = users;
 exports.branches = branches; 
-exports.category = category; 
 exports.flowers = flowers; 
+exports.roles = roles; 
